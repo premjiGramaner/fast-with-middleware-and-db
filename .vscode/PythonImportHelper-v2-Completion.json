@@ -1,0 +1,54 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "PostArgs",
+        "kind": 6,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "class PostArgs(BaseModel):\n    value: str\n@app.post(\"/ping\")\ndef ping(args: PostArgs):\n    return {\"message\": f\"Return value: {args.value}\"}",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def read_root():\n    return {\"message\": \"Hello, World!\"}\nclass PostArgs(BaseModel):\n    value: str\n@app.post(\"/ping\")\ndef ping(args: PostArgs):\n    return {\"message\": f\"Return value: {args.value}\"}",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "ping",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def ping(args: PostArgs):\n    return {\"message\": f\"Return value: {args.value}\"}",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app = FastAPI()\n# Default route to validate the application is running\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Hello, World!\"}\nclass PostArgs(BaseModel):\n    value: str\n@app.post(\"/ping\")\ndef ping(args: PostArgs):\n    return {\"message\": f\"Return value: {args.value}\"}",
+        "detail": "app.main",
+        "documentation": {}
+    }
+]
