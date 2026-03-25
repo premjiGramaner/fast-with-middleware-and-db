@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FastAPI Demo</title>
+</head>
+
+<body>
+
+    <h2>Upload File</h2>
+    <input type="file" id="file">
+    <button onclick="uploadFile()">Upload</button>
+
+    <h2>Create Item (JSON)</h2>
+    <button onclick="createJson()">Send JSON</button>
+
+    <h2>Get Items (Query)</h2>
+    <button onclick="getItems()">Fetch</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        const headers = {
+            "Authorization": "Bearer test"
+        };
+
+        function uploadFile() {
+            let formData = new FormData();
+            formData.append("file", $("#file")[0].files[0]);
+
+            $.ajax({
+                url: "http://localhost:8000/upload/file",
+                type: "POST",
+                headers: headers,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: res => console.log(res)
+            });
+        }
+
+        function createJson() {
+            $.ajax({
+                url: "http://localhost:8000/items/json",
+                type: "POST",
+                headers: headers,
+                contentType: "application/json",
+                data: JSON.stringify({
+                    name: "Laptop",
+                    category: "Electronics",
+                    description: "Gaming"
+                }),
+                success: res => console.log(res)
+            });
+        }
+
+        function getItems() {
+            $.ajax({
+                url: "http://localhost:8000/items?category=Electronics&limit=5",
+                headers: headers,
+                success: res => console.log(res)
+            });
+        }
+    </script>
+
+</body>
+
+</html>
